@@ -37,3 +37,33 @@ function handleModalClose() {
     </dialog>
   </Teleport>
 </template>
+
+<style scoped>
+/* Backdrop styling when any of the modals are open */
+dialog:modal::backdrop {
+  @apply bg-black/60;
+}
+
+dialog::backdrop {
+  pointer-events: none;
+}
+
+/* Modal transition styles */
+dialog {
+  opacity: 0;
+  transition: opacity 200ms ease;
+  transition-behavior: allow-discrete;
+}
+
+dialog:modal {
+  opacity: 1;
+  transition: opacity 200ms ease;
+  transition-behavior: allow-discrete;
+}
+
+@starting-style {
+  dialog:modal {
+    opacity: 0;
+  }
+}
+</style>
