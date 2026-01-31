@@ -46,7 +46,12 @@
     "popular_packages": "Popular packages",
     "search": "search",
     "settings": "settings",
-    "back": "back"
+    "back": "back",
+    "menu": "Menu",
+    "mobile_menu": "Navigation menu",
+    "open_menu": "Open menu",
+    "links": "Links",
+    "tap_to_search": "Tap to search"
   },
   "settings": {
     "title": "settings",
@@ -98,6 +103,7 @@
     "go_back_home": "Go back home",
     "view_on_npm": "view on npm",
     "per_week": "/ week",
+    "vanity_downloads_hint": "Vanity number: no packages displayed | Vanity number: for the displayed package | Vanity number: Sum of {count} displayed packages",
     "sort": {
       "name": "name",
       "role": "role",
