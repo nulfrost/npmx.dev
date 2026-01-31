@@ -558,3 +558,8 @@ input[type='search']::-webkit-search-results-decoration {
 html:has(dialog[open]) {
   overflow: hidden;
 }
+
+/* Backdrop styling when any of the modals are open */
+dialog[open]::backdrop {
+  @apply bg-black/60;
+}
