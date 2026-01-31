@@ -14,7 +14,7 @@ function handleModalClose() {
 <template>
   <dialog
     id="modal"
-    class="w-full bg-bg border border-border rounded-lg shadow-xl max-h-[90vh] overflow-y-auto overscroll-contain m-0 m-auto p-6"
+    class="w-full bg-bg border border-border rounded-lg shadow-xl max-h-[90vh] overflow-y-auto overscroll-contain m-0 m-auto p-6 text-white"
   >
     <!-- Modal top header section -->
     <div class="flex items-center justify-between mb-6">

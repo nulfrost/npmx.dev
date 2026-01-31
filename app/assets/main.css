@@ -555,11 +555,30 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 /* Locking the scroll whenever any of the modals are open */
-html:has(dialog[open]) {
+html:has(dialog:open) {
   overflow: hidden;
 }
 
 /* Backdrop styling when any of the modals are open */
-dialog[open]::backdrop {
+dialog:open::backdrop {
   @apply bg-black/60;
+}
+
+/* Modal transition styles */
+dialog {
+  opacity: 0;
+  transition: opacity 200ms ease;
+  transition-behavior: allow-discrete;
+}
+
+dialog:open {
+  opacity: 1;
+  transition: opacity 200ms ease;
+  transition-behavior: allow-discrete;
+}
+
+@starting-style {
+  dialog:open {
+    opacity: 0;
+  }
 }
