@@ -10,7 +10,8 @@ onKeyStroke(
   'Escape',
   e => {
     const target = e.target as HTMLElement
-    if (!['INPUT', 'SELECT', 'TEXTAREA'].includes(target?.tagName)) {
+    console.log(target)
+    if (!['INPUT', 'SELECT', 'TEXTAREA', 'BUTTON'].includes(target?.tagName)) {
       e.preventDefault()
       router.back()
     }
