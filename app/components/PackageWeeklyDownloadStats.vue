@@ -4,18 +4,13 @@ import { VueUiSparkline } from 'vue-data-ui/vue-ui-sparkline'
 import { useCssVariables } from '../composables/useColors'
 import { OKLCH_NEUTRAL_FALLBACK, lightenOklch } from '../utils/colors'
 
-const { packageName } = defineProps<{
+const props = defineProps<{
   packageName: string
 }>()
 
-function showChartModal() {
-  const chartModal = document.querySelector<HTMLDialogElement>('#chart-modal')
-  if (chartModal) {
-    chartModal.showModal()
-  }
-}
+const chartModal = useModal('chart-modal')
 
-const { data: packument } = usePackage(() => packageName)
+const { data: packument } = usePackage(() => props.packageName)
 const createdIso = computed(() => packument.value?.time?.created ?? null)
 
 const { fetchPackageDownloadEvolution } = useCharts()
@@ -90,7 +85,7 @@ async function loadWeeklyDownloads() {
 
   try {
     const result = await fetchPackageDownloadEvolution(
-      () => packageName,
+      () => props.packageName,
       () => createdIso.value,
       () => ({ granularity: 'week' as const, weeks: 52 }),
     )
@@ -105,7 +100,7 @@ onMounted(() => {
 })
 
 watch(
-  () => packageName,
+  () => props.packageName,
   () => loadWeeklyDownloads(),
 )
 
@@ -200,7 +195,7 @@ const config = computed(() => {
       <template #actions>
         <button
           type="button"
-          @click="showChartModal"
+          @click="chartModal.open()"
           class="link-subtle font-mono text-sm inline-flex items-center gap-1.5 ms-auto shrink-0 self-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/50 rounded"
           :title="$t('package.downloads.analyze')"
         >
