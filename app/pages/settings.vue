@@ -10,8 +10,10 @@ onKeyStroke(
   'Escape',
   e => {
     const target = e.target as HTMLElement
-    console.log(target)
-    if (!['INPUT', 'SELECT', 'TEXTAREA', 'BUTTON'].includes(target?.tagName)) {
+    if (
+      !['INPUT', 'SELECT', 'TEXTAREA'].includes(target?.tagName) &&
+      !document.documentElement.matches('html:has(:modal)')
+    ) {
       e.preventDefault()
       router.back()
     }
